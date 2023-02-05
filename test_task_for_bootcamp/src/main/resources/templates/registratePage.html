@@ -1,0 +1,36 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/pattern.html"
+      xmlns:sec="http//www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<div layout:fragment="content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class=" col-12 justify-content-center">
+                <h1 class="text-center">
+                    Welcome to signIn
+                </h1>
+            </div>
+            <div class="col-5">
+                <div>
+                    <form th:action="@{'/addUser'}" method="post">
+                        <label>Email:
+                        </label>
+                        <input class="form-control mb-2" type="email" name="user_email">
+                        <label>Insert your name:</label>
+                        <input class="form-control mb-2" type="text" name="full_name">
+                        <label>Password:
+                        </label>
+                        <input class="form-control mb-2" type="password" name="user_password">
+                        <label>Repeat Your Password:</label>
+                        <input class="form-control mb-2" type="password" name="user_rePassword">
+                        <div>
+                            <button class="btn btn-primary"> signin</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</html>

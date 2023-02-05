@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http//www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="utf-8">
+    <title>trello</title>
+</head>
+<link rel="stylesheet" type="text/css" th:href="@{'/css/bootstrap.css'}">
+<script type="text/javascript" th:src="@{'js/bootstrap.bundle.js'}"></script>
+
+
+<body>
+<div class="container fixed-top">
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{'/'}">Аукцион.ком</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Переключатель навигации">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Отфильтровать по категориям</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" th:href="@{'/'}">Показать все товары</a></li>
+                            <li th:each="category:${categories}"><a class="dropdown-item"
+                                                                    th:href="@{'/'+${category.id}}"
+                                                                    th:text="${category.name}"></a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{'/signin'}" sec:authorize="isAnonymous()">Войти</a>
+                    </li>
+                    <li>
+                    <a class="nav-link px-3" href="JavaScript:void(0)" sec:authorize="isAuthenticated()" onclick="signOutForm.submit()">Выйти</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{'/profile'}" sec:authorize="isAuthenticated()">Личный кабинет</a>
+                    </li>
+                </ul>
+                <form th:action="@{'/exit'}" id="signOutForm" method="post">
+                </form>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="my-5 container" layout:fragment="content">
+</div>
+</body>
+</html>

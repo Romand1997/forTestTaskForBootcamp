@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/pattern.html"
+      xmlns:sec="http//www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<div layout:fragment="content">
+    <h1>
+        Welcome to Profile page,
+        <span th:text="${user.full_name}"></span>
+    </h1>
+<!--    <h1>-->
+<!--        Welcome to Profile page,-->
+<!--        <span th:text="${#authentication.principal.full_name}"></span>-->
+<!--    </h1>-->
+<form th:action="@{'changePasswordPage'}" method="get">
+    <button class="btn btn-primary">Change your Password</button>
+</form>
+</div>
+</html>
